@@ -2,25 +2,25 @@
 #include<iostream>
 using namespace std;
 
-typedef struct QNode //¶ÓÁĞÁ´Ê½´æ´¢
+typedef struct QNode //é˜Ÿåˆ—é“¾å¼å­˜å‚¨
 {
 	string data;
 	struct QNode *next;
 }QNode,*QueuePtr;
 typedef struct
 {
-	QueuePtr front;  //¶ÓÁĞÍ·Ö¸Õë
-	QueuePtr rear;   //¶ÓÁĞÎ²Ö¸Õë
+	QueuePtr front;  //é˜Ÿåˆ—å¤´æŒ‡é’ˆ
+	QueuePtr rear;   //é˜Ÿåˆ—å°¾æŒ‡é’ˆ
 }LinkQueue;
 
-void menu();        //ÏÔÊ¾²Ëµ¥
-void initQueue(LinkQueue &Q);         //³õÊ¼»¯¶ÓÁĞ
-void EnQueue(LinkQueue &Q,string e);  //Èë¶ÓÁĞ
-void DeQueue(LinkQueue &Q,string &e); //³ö¶ÓÁĞ
-int QueueLength(LinkQueue &Q);        //¼ÆËã¶ÓÁĞÖĞÔªËØ¸öÊı
-LinkQueue Ready;    //¾ÍĞ÷¶ÓÁĞ
-LinkQueue Blocked;  //×èÈû¶ÓÁĞ
-LinkQueue Running;  //Ö´ĞĞ¶ÓÁĞ
+void menu();        //æ˜¾ç¤ºèœå•
+void initQueue(LinkQueue &Q);         //åˆå§‹åŒ–é˜Ÿåˆ—
+void EnQueue(LinkQueue &Q,string e);  //å…¥é˜Ÿåˆ—
+void DeQueue(LinkQueue &Q,string &e); //å‡ºé˜Ÿåˆ—
+int QueueLength(LinkQueue &Q);        //è®¡ç®—é˜Ÿåˆ—ä¸­å…ƒç´ ä¸ªæ•°
+LinkQueue Ready;    //å°±ç»ªé˜Ÿåˆ—
+LinkQueue Blocked;  //é˜»å¡é˜Ÿåˆ—
+LinkQueue Running;  //æ‰§è¡Œé˜Ÿåˆ—
 
 
 int main()
@@ -33,10 +33,10 @@ int main()
 	EnQueue(Ready,"i");
 	EnQueue(Ready,"x");
 	EnQueue(Ready,"t");
-    EnQueue(Ready,"h");
+    	EnQueue(Ready,"h");
 
-    len=QueueLength(Ready);
-    cout<<len;
+    	len=QueueLength(Ready);
+	cout<<len;
 
 
 	DeQueue(Ready,s);
@@ -45,8 +45,7 @@ int main()
 	DeQueue(Ready,s);
 	DeQueue(Ready,s);
 	DeQueue(Ready,s);
-	DeQueue(Ready,s);
-	DeQueue(Ready,s);
+
 	return 0;
 }
 
@@ -66,7 +65,7 @@ void EnQueue(LinkQueue &Q,string e)
 	p->data=e;
 	p->next=NULL;Q.rear->next=p;
 	Q.rear=p;
-	//cout<<"Èë¶Ó";
+	//cout<<"å…¥é˜Ÿ";
 }
 void DeQueue(LinkQueue &Q,string &e)
 {
@@ -75,9 +74,9 @@ void DeQueue(LinkQueue &Q,string &e)
 	{
 		return;
 	}
-	p=Q.front->next;         //×¢£º¶ÓÁĞ¾ÍÊÇ´Ó¶ÓÍ·¿ªÊ¼É¾³ı
+	p=Q.front->next;         //æ³¨ï¼šé˜Ÿåˆ—å°±æ˜¯ä»é˜Ÿå¤´å¼€å§‹åˆ é™¤
 	e=p->data;
-	Q.front->next=p->next;   //ĞŞ¸ÄÍ·Ö¸Õë
+	Q.front->next=p->next;   //ä¿®æ”¹å¤´æŒ‡é’ˆ
 	if(Q.rear==p)
 	{
 		Q.rear=Q.front;
@@ -86,7 +85,7 @@ void DeQueue(LinkQueue &Q,string &e)
 	cout<<e;
 }
 
-int QueueLength(LinkQueue &Q)//¼ÆËã¶ÓÁĞÖĞÔªËØ¸öÊı
+int QueueLength(LinkQueue &Q)//è®¡ç®—é˜Ÿåˆ—ä¸­å…ƒç´ ä¸ªæ•°
 {
     QueuePtr p;
     int length=0;
@@ -100,12 +99,12 @@ int QueueLength(LinkQueue &Q)//¼ÆËã¶ÓÁĞÖĞÔªËØ¸öÊı
 }
 void menu()
 {
-	cout<<"\tÑ¡ÔñÒªÖ´ĞĞµÄÃüÁî£º"<<endl;
-	cout<<"\t0-------°ïÖú"<<endl;
-	cout<<"\t1-------´´½¨½ø³Ì"<<endl;
-	cout<<"\t2-------³·Ïú½ø³Ì"<<endl;
-	cout<<"\t3-------µ÷¶È½ø³Ì"<<endl;
-	cout<<"\t4-------×èÈû½ø³Ì"<<endl;
-	cout<<"\t5-------»½ĞÑ½ø³Ì"<<endl;
-	cout<<"\t6-------Ê±¼äÆ¬"<<endl;
+	cout<<"\té€‰æ‹©è¦æ‰§è¡Œçš„å‘½ä»¤ï¼š"<<endl;
+	cout<<"\t0-------å¸®åŠ©"<<endl;
+	cout<<"\t1-------åˆ›å»ºè¿›ç¨‹"<<endl;
+	cout<<"\t2-------æ’¤é”€è¿›ç¨‹"<<endl;
+	cout<<"\t3-------è°ƒåº¦è¿›ç¨‹"<<endl;
+	cout<<"\t4-------é˜»å¡è¿›ç¨‹"<<endl;
+	cout<<"\t5-------å”¤é†’è¿›ç¨‹"<<endl;
+	cout<<"\t6-------æ—¶é—´ç‰‡"<<endl;
 }
