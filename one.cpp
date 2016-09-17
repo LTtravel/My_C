@@ -19,6 +19,7 @@ void EnQueue(LinkQueue &Q,string e);  //入队列
 void DeQueue(LinkQueue &Q,string &e); //出队列
 int QueueLength(LinkQueue &Q);        //计算队列中元素个数
 void QueueTraverse(LinkQueue &Q);     //遍历队列中元素并显示
+void GetHead(LinkQueue &Q);           //取队头元素
 LinkQueue Ready;    //就绪队列
 LinkQueue Blocked;  //阻塞队列
 LinkQueue Running;  //执行队列
@@ -112,6 +113,14 @@ void QueueTraverse(LinkQueue &Q)//遍历队列中元素并显示
         p=p->next;
     }
     printf("\n");
+}
+void GetHead(LinkQueue &Q)//取队头元素
+{
+    if(Q.front!=Q.rear)
+    {
+        head=Q.front->next->data;
+    }
+    return;
 }
 void menu()
 {
