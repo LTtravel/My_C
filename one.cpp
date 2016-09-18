@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<iostream>
+#include<string.h>
 using namespace std;
 
 typedef struct QNode //队列链式存储
@@ -24,6 +25,10 @@ LinkQueue Ready;    //就绪队列
 LinkQueue Blocked;  //阻塞队列
 LinkQueue Running;  //执行队列
 
+void create();//创建进程
+void stop();//撤销（终止）进程
+void block();//阻塞进程
+void order();//自动调度
 
 int main()
 {
@@ -128,8 +133,58 @@ void menu()
 	cout<<"\t0-------帮助"<<endl;
 	cout<<"\t1-------创建进程"<<endl;
 	cout<<"\t2-------撤销进程"<<endl;
-	cout<<"\t3-------调度进程"<<endl;
-	cout<<"\t4-------阻塞进程"<<endl;
-	cout<<"\t5-------唤醒进程"<<endl;
-	cout<<"\t6-------时间片"<<endl;
+	cout<<"\t3-------阻塞进程"<<endl;
+	cout<<"\t4-------唤醒进程"<<endl;
+	cout<<"\t5-------时间片"<<endl;
+}
+void create()//创建进程
+{
+    string str;
+    cout<<"the name of creation:";
+    cin>>str;
+    if(QueueEmpty(Running))//Running为空
+    {
+        EnQueue(Running,str);
+    }
+    else
+    {
+        EnQueue(Ready,str);
+    }
+    return;
+}
+void stop()//撤销（终止）进程
+{
+    if(QueueEmpty(Running))//Running为空
+    {
+        cout<<"不能执行，因为没有正在执行的程序！\n";
+    }
+    else
+    {
+        DeQueue(Running);
+    }
+}
+void block()//阻塞进程
+{
+    if(QueueEmpty(Running))//Running为空
+    {
+        cout<<"不能执行，因为没有正在执行的程序！\n";
+    }
+    else
+    {
+        DeQueue(Running);
+        EnQueue(Blocked,head);
+    }
+}
+void order()//自动调度
+{
+    if(QueueEmpty(Ready))//Ready为空
+    {
+        //cout<<"不能执行，因为没有在就绪态的程序！\n";
+        return;
+    }
+    else
+    {
+        DeQueue(Ready);
+        EnQueue(Running,head);
+    }
 }
