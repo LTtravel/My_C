@@ -21,6 +21,8 @@ void DeQueue(LinkQueue &Q,string &e); //出队列
 int QueueLength(LinkQueue &Q);        //计算队列中元素个数
 void QueueTraverse(LinkQueue &Q);     //遍历队列中元素并显示
 void GetHead(LinkQueue &Q);           //取队头元素
+bool QueueEmpty(LinkQueue &Q);        //判断队列是否为空
+
 LinkQueue Ready;    //就绪队列
 LinkQueue Blocked;  //阻塞队列
 LinkQueue Running;  //执行队列
@@ -120,6 +122,17 @@ void GetHead(LinkQueue &Q)//取队头元素
         head=Q.front->next->data;
     }
     return;
+}
+bool QueueEmpty(LinkQueue &Q)//判断队列是否为空
+{
+    if(Q.front==Q.rear && Q.front!=NULL)//队列为空，返回true
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 void menu()
 {
