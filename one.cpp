@@ -32,26 +32,20 @@ void order();//自动调度
 
 int main()
 {
-	//menu();
-	string s;
-	int len;
+	menu();
 	initQueue(Ready);
-	EnQueue(Ready,"s");
-	EnQueue(Ready,"i");
-	EnQueue(Ready,"x");
-	EnQueue(Ready,"t");
-    	EnQueue(Ready,"h");
+	initQueue(Blocked);
+	initQueue(Running);
+	//EnQueue(Ready,"s");
+	//EnQueue(Ready,"i");
+	//EnQueue(Ready,"x");
+	//EnQueue(Ready,"t");
+    	//EnQueue(Ready,"h");
 
-    	len=QueueLength(Ready);
-	cout<<len;
+    	//len=QueueLength(Ready);
+	//cout<<len;
 
-
-	DeQueue(Ready,s);
-	DeQueue(Ready,s);
-	DeQueue(Ready,s);
-	DeQueue(Ready,s);
-	DeQueue(Ready,s);
-	DeQueue(Ready,s);
+	//DeQueue(Ready,s);
 
 	return 0;
 }
@@ -130,7 +124,7 @@ void GetHead(LinkQueue &Q)//取队头元素
 void menu()
 {
 	cout<<"\t选择要执行的命令："<<endl;
-	cout<<"\t0-------帮助"<<endl;
+	cout<<"\t0-------退出"<<endl;
 	cout<<"\t1-------创建进程"<<endl;
 	cout<<"\t2-------撤销进程"<<endl;
 	cout<<"\t3-------阻塞进程"<<endl;
