@@ -40,15 +40,39 @@ int main()
 	initQueue(Blocked);
 	initQueue(Running);
 	//EnQueue(Ready,"s");
-	//EnQueue(Ready,"i");
-	//EnQueue(Ready,"x");
-	//EnQueue(Ready,"t");
-    	//EnQueue(Ready,"h");
-
     	//len=QueueLength(Ready);
 	//cout<<len;
-
 	//DeQueue(Ready,s);
+	int num;
+    	bool flg=true;
+	menu();
+    	cout<<"which do you want to choose?\n";
+    	do
+    	{
+
+        	cout<<"I choose ";
+        	cin>>num;
+        	switch(num)
+        	{
+	            	case 1:create();break;
+	            	case 2:stop();break;
+	            	//case 3:order();break;
+	            	case 3:block();break;
+	            	case 4:wake();break;
+	            	case 5:time();break;
+	            	case 0:flg=false;break;
+	            	default:break;
+        	}
+	        if(QueueEmpty(Running))
+	        {
+	            order();
+	        }
+	        cout<<"\tReady:";QueueTraverse(Ready);cout<<"\n";
+	        cout<<"\tRunning:";QueueTraverse(Running);cout<<"\n";
+	        cout<<"\tBlocked:";QueueTraverse(Blocked);cout<<"\n";
+	        cout<<"------------------------------------\n";
+	    }while(flg);
+
 
 	return 0;
 }
