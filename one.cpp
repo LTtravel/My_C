@@ -31,7 +31,8 @@ void create();//创建进程
 void stop();//撤销（终止）进程
 void block();//阻塞进程
 void order();//自动调度
-
+void wake(); //唤醒进程
+void time();//时间片用完
 int main()
 {
 	menu();
@@ -182,6 +183,18 @@ void block()//阻塞进程
         EnQueue(Blocked,head);
     }
 }
+void wake()//唤醒进程
+{
+    if(QueueEmpty(Blocked))//Blocked为空
+    {
+        cout<<"不能执行，因为没有在阻塞态的程序！\n";
+    }
+    else
+    {
+        DeQueue(Blocked);
+        EnQueue(Ready,head);
+    }
+}
 void order()//自动调度
 {
     if(QueueEmpty(Ready))//Ready为空
@@ -193,5 +206,17 @@ void order()//自动调度
     {
         DeQueue(Ready);
         EnQueue(Running,head);
+    }
+}
+void time()//时间片用完
+{
+    if(QueueEmpty(Running))//Running为空
+    {
+        cout<<"不能执行，因为没有正在执行的程序！\n";
+    }
+    else
+    {
+        DeQueue(Running);
+        EnQueue(Ready,head);
     }
 }
